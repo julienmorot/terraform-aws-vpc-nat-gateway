@@ -43,13 +43,13 @@ resource "aws_subnet" "sub-priv-a" {
 
 resource "aws_eip" "nat" {
   vpc        = true
-  depends_on = ["aws_internet_gateway.default"]
+  depends_on = [aws_internet_gateway.default]
 }
 
 resource "aws_nat_gateway" "nat_gw" {
   allocation_id = aws_eip.nat.id
   subnet_id     = aws_subnet.sub-pub-a.id
-  depends_on    = ["aws_internet_gateway.default"]
+  depends_on    = [aws_internet_gateway.default]
 }
 
 resource "aws_route_table" "rt_private" {

@@ -2,7 +2,7 @@ resource "aws_instance" "www1" {
   ami                         = "ami-c1cf79bc"
   instance_type               = "t2.micro"
   key_name                    = "aws-ssh-key"
-  vpc_security_group_ids      = ["${aws_security_group.sg_www.id}"]
+  vpc_security_group_ids      = ["aws_security_group.sg_www.id"]
   user_data                   = <<EOF
 #!/bin/bash
 echo www1 > /etc/hostname
@@ -17,7 +17,7 @@ resource "aws_instance" "www2" {
   ami                         = "ami-c1cf79bc"
   instance_type               = "t2.micro"
   key_name                    = "aws-ssh-key"
-  vpc_security_group_ids      = ["${aws_security_group.sg_www.id}"]
+  vpc_security_group_ids      = ["aws_security_group.sg_www.id"]
   user_data                   = <<EOF
 #!/bin/bash
 echo www2 > /etc/hostname
@@ -32,7 +32,7 @@ resource "aws_instance" "remote" {
   ami                         = "ami-c1cf79bc"
   instance_type               = "t2.micro"
   key_name                    = "aws-ssh-key"
-  vpc_security_group_ids      = ["${aws_security_group.sg_adm.id}"]
+  vpc_security_group_ids      = ["aws_security_group.sg_adm.id"]
   user_data                   = <<EOF
 #!/bin/bash
 echo remote > /etc/hostname
