@@ -9,14 +9,14 @@ resource "aws_subnet" "sub-pub-a" {
   cidr_block              = "172.16.20.0/24"
   map_public_ip_on_launch = true
   availability_zone = "eu-west-3a"
-  tags {
+  tags = {
     Name = "Subnet public eu-west-3a"
   }
 }
 
 resource "aws_internet_gateway" "default" {
   vpc_id = "${aws_vpc.vpc_main.id}"
-  tags {
+  tags = {
     Name = "InternetGW"
   }
 }
